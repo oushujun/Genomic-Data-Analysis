@@ -1,20 +1,34 @@
-## Using Deep Learning to predict gene annotations
+## Using Deep Learning for ab initio gene predictions
 
 ### Helixer GitHub ###
+This is the original Helixer that includes model training and prediction  
 https://github.com/usadellab/Helixer  
-https://github.com/gglyptodon/helixer-docker
+https://github.com/gglyptodon/helixer-docker  
 
-### Running via Apptainer ###
-Running Helixer via Apptainer was tested for the following versions recently:
-- Apptainer v1.3.4 on Ubuntu 22.04 and Ubuntu 24.04 (with the extra setup command)
-- Apptainer v1.3.6 on Ubuntu 22.04
-```
-# pull current docker image 
-apptainer pull docker://gglyptodon/helixer-docker:helixer_v0.3.6_cuda_12.2.2-cudnn8
+### HelixerLite GitHub ###
+This is a lightweight and easy-to-install Helixer that only includes model prediction  
+https://github.com/nextgenusfs/helixerlite  
 
-# in this example, the directory "helixer_test" already contains downloaded data
-apptainer run --nv helixer-docker_helixer_v0.3.6_cuda_12.2.2-cudnn8.sif Helixer.py \
-  --fasta-path helixer_test/Arabidopsis_lyrata.v.1.0.dna.chromosome.8.fa.gz --lineage land_plant \
-  --gff-output-path Arabidopsis_lyrata_chromosome8_helixer.gff3
-# notice '--nv' for GPU support
+### Install HelixerLite ###
 ```
+conda create -n helixer python=3.10  
+conda activate helixer  
+python -m pip install helixerlite
+```
+
+### Annotate Arabidopsis sequences with different models ###
+#### 1. request compute resources ####
+```
+sinteractive -A PAS3124 -n 60 -t 1:00:00
+```
+
+#### 2. use HelixerLite to predict genes using varying models ####
+```
+nohup helixerlite --fasta Arabidopsis_thaliana.TAIR10.dna.toplevel.chr1_5M.fa --lineage land_plant --out chr1_5M.land_plant.output.gff3 -c 30 &  
+nohup helixerlite --fasta Arabidopsis_thaliana.TAIR10.dna.toplevel.chr1_5M.fa --lineage fungi --out chr1_5M.fungi.output.gff3 -c 30 &  
+nohup helixerlite --fasta Arabidopsis_thaliana.TAIR10.dna.toplevel.chr1_5M.fa --lineage vertebrate --out chr1_5M.vertebrate.output.gff3 -c 30 &  
+nohup helixerlite --fasta Arabidopsis_thaliana.TAIR10.dna.toplevel.chr1_5M.fa --lineage invertebrate --out chr1_5M.invertebrate.output.gff3 -c 30 &
+```
+
+### Download and Install IGV ###
+https://igv.org/download/html/oldtempfixForDownload.html
