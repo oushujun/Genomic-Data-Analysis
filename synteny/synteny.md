@@ -50,5 +50,5 @@ scp -r username@remote.server.address:/path/to/remote/file/results/dotplots/\*pd
 
 ### NCBI houses pre-computed syntenic blocks!
 https://www.ncbi.nlm.nih.gov/cgv/browse/GCA_905216605.1/GCF_000001735.4/48945/3702
-https://www.ncbi.nlm.nih.gov/cgv/plot/GCA_905216605.1/GCF_000001735.4/48945/3702
+https://www.ncbi.nlm.nih.gov/cgv/plot/GCA_905216605.1/GCF_000001735.4/48945/3702  
 The idiogram and the dotplot are two ways to view synteny. 
