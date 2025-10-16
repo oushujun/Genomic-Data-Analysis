@@ -1,5 +1,6 @@
 ## This pipeline uses a reference proteome to liftover gene annotations and perform syntenic analysis using McScan.
-https://github.com/tanghaibao/jcvi/wiki/Mcscan-(python-version)
+For liftover: https://github.com/lh3/miniprot  
+For synteny: https://github.com/tanghaibao/jcvi/wiki/Mcscan-(python-version)
 
 ### Create and activate the environment.
 ```
@@ -39,8 +40,7 @@ python synLTR/module1.py --genomes *fa --threads 50 --dir_name results --protein
 cat results/Ahall.Athal.anchors.coords.polished2.consolidated | head -1
 Ahall_chr1:2844..49097	Athal_chr1:387478..422154	-
 ```
-*Arabidopsis thaliana* `Athal_chr1:387478-422154` is syntenic to *Arabidopsis halleri* at `Ahall_chr1:2844-49097`.  
-It's a reverse stranded syntenic block.  
+*Arabidopsis thaliana* `Athal_chr1:387478-422154` is syntenic to *Arabidopsis halleri* at `Ahall_chr1:2844-49097` on the reverse strand.  
 
 
 ### Download syntenic dotplots from server to personal computer. 
