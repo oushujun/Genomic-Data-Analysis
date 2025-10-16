@@ -1,7 +1,7 @@
 
 ### Create and activate the environment.
 ```
-mamba env create -f synteny.yml 
+mamba env create -f Genomic-Data-Analysis/synteny/synteny.yml 
 conda activate synteny
 ```
 ### Clone the repo. 
