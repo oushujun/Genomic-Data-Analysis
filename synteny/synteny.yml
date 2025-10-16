@@ -1,0 +1,28 @@
+name: synteny
+channels: [conda-forge, bioconda, defaults]
+dependencies:
+  # Python runtime
+  - python=3.10.18
+  - pip
+
+  # Python packages (pinned to your audit)
+  - jcvi=1.5.6
+  - biopython=1.85
+  - matplotlib=3.10.3
+  - numpy=1.26.0
+  - scipy=1.15.2
+  - networkx=3.4.2
+  - reportlab  # you were missing this
+
+  # CLI tools your pipeline calls
+  - bedtools=2.31.1
+  - samtools=1.22
+  - bioawk              # versioning is odd; leaving unpinned is fine
+  - cd-hit=4.8.1
+  - blast=2.16.0        # provides blastp/makeblastdb
+  - seqkit=2.10.0
+  - diamond=2.1.12
+  - last=1642           # needed only if you ever run jcvi with --last
+  - hmmer=3.4           # required by TEsorter
+  - TEsorter=1.4.7
+  - miniprot            # install instead of building from source
